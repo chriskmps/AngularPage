@@ -1,4 +1,6 @@
-import { Component, OnInit, DefaultIterableDiffer } from '@angular/core';
+import { RecipeService } from './../recipe.service';
+import { Component, OnInit, DefaultIterableDiffer, Input } from '@angular/core';
+import { Recipe } from '../recipe.model';
 
 @Component({
     selector: 'app-recipe-detail',
@@ -6,7 +8,12 @@ import { Component, OnInit, DefaultIterableDiffer } from '@angular/core';
     styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent {
-    constructor() {}
+    @Input() recipe: Recipe;
+    constructor(private RecipeService: RecipeService) {}
 
     ngOnInit() {}
+
+    onAddToShoppingList() {
+      this.RecipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+    }
 }

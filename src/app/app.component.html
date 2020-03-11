@@ -1,9 +1,13 @@
-<app-header></app-header>
+<app-header (emitChosen)="handleHeaderEvent($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <div *ngIf="recipesSelected === true">
+        <app-recipes></app-recipes>
+      </div>
+      <div *ngIf="shoppingSelected === true">
+        <app-shopping-list></app-shopping-list>
+      </div>
     </div>
   </div>
 </div>
